@@ -20,6 +20,11 @@ rename_dates_to_times_a <- function(seqs) {
     format(new_times, digits = 6),
     sep = ""
   )
-  names(seqs) <- new_names
+  new_names_cleaned <- gsub(
+    pattern = " ",
+    replacement = "",
+    x = new_names
+  )
+  names(seqs) <- new_names_cleaned
   return(seqs)
 }
