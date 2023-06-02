@@ -1,7 +1,7 @@
 test_that("names avoid whitespace", {
   ## A small dataset to expose a bug where white space creeps into the
   ## sequence names.
-  demo_dnabin <- as.DNAbin(
+  demo_dnabin <- ape::as.DNAbin(
     list(
       "leaf_2023-06-10" = c("a", "a"),
       "leaf_2023-06-18" = c("a", "a"),
