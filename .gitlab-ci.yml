@@ -1,0 +1,10 @@
+stages:
+  - test
+
+test:
+  image: rocker/r-base
+
+  script:
+    - Rscript -e "install.packages('devtools', repos = 'http://cran.us.r-project.org')"
+    - Rscript -e "devtools::install_deps(dependencies = TRUE)"
+    - Rscript -e "devtools::test()"
