@@ -3,6 +3,7 @@
 export(get_present)
 export(plot_dates)
 export(plot_times)
+export(read_beast2_log)
 export(read_fasta)
 export(rename_dates_to_times_a)
 export(rename_time_series)
