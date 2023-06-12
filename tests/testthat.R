@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
 library(testthat)
-library(timtamslam)
+library(timtamslamR)
 
-test_check("timtamslam")
+test_check("timtamslamR")

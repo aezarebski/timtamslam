@@ -2,7 +2,7 @@ test_that("basic examples work", {
 
   path <- system.file(
     "testdata", "demo-timtam.log",
-    package = "timtamslam"
+    package = "timtamslamR"
   )
 
   log_df <- read_beast2_log(path)

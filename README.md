@@ -1,5 +1,5 @@
 
-# timtamslam
+# timtamslamR
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -8,12 +8,12 @@ Helps you to slam together an analysis.
 
 ## Installation
 
-You can install the development version of timtamslam from
+You can install the development version of timtamslamR from
 [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("aezarebski/timtamslam")
+devtools::install_github("aezarebski/timtamslamR")
 ```
 
 ## Example
@@ -23,7 +23,7 @@ containing dated sequences and then export them with labels that have
 times (obtained via method "a").
 
 ``` r
-library(timtamslam)
+library(timtamslamR)
 
 x <- read_fasta("input.fasta")
 plot_dates(x)
