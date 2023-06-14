@@ -8,6 +8,12 @@
 #'
 #' @return data frame containing the samples.
 #'
+#' @examples
+#'
+#' path <- system.file("testdata", "demo-timtam.log",
+#'                     package = "timtamslamR")
+#' log_df <- read_beast2_log(path)
+#'
 #' @export
 read_beast2_log <- function(filename, burn = 0, take_last = NA,
                             as_mcmc = FALSE) {

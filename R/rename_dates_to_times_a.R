@@ -6,6 +6,13 @@
 #' @details This uses a uniform distribution of the sequences across a
 #'   day such that midday and midnight are kept free.
 #'
+#' @examples
+#'
+#' path <- system.file("testdata", "demo-sequences.fasta",
+#'                     package = "timtamslamR")
+#' seqs_calendar <- read_fasta(path)
+#' seqs_times_a <- rename_dates_to_times_a(seqs_calendar)
+#'
 #' @export
 rename_dates_to_times_a <- function(seqs) {
   stopifnot(class(seqs) == "DNAbin")

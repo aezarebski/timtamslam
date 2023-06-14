@@ -3,6 +3,9 @@
 #' @param seqs_dated A DNAbin object with dates.
 #' @param seqs_timed A DNAbin object with times.
 #'
+#' @return A list with two elements: date and hours (time of last
+#'   sequenced sample).
+#'
 #' @export
 get_present <- function(seqs_dated, seqs_timed) {
   last_date <- max(as.Date(extract_dates(seqs_dated)))
