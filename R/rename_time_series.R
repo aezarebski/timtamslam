@@ -20,6 +20,9 @@
 #'
 #' @export
 rename_time_series <- function(present, time_series) {
+  if (!"date" %in% colnames(time_series)) {
+    stop("time_series must have a column named 'date'")
+  }
   offset <- present$hours / 24 - 1 / 2
   bwd_days <- as.numeric(as.Date(present$date) - as.Date(time_series$date))
   time_series$bwd_times <- bwd_days + offset
