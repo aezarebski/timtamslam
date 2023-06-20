@@ -1,3 +1,6 @@
+#' Get the hours, minutes, and seconds from a fraction of a day.
+#'
+#' @export
 get_hms_str <- function(frac_day) {
   if (frac_day < 0 | frac_day >= 1) {
     stop("frac_day must be between 0 (inclusive) and 1 (exclusive)")
