@@ -12,6 +12,7 @@ RoxygenNote: 7.2.3
 Imports:
     ape,
     coda,
+    lubridate,
     utils
 Suggests:
     testthat (>= 3.0.0)

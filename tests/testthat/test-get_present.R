@@ -11,10 +11,10 @@ test_that("basic example", {
 
   present_val <- get_present(seqs_calendar, seqs_times_a)
   present_goal <- list(
-    date = as.Date("2023-08-04"),
-    hours = 22.399992
+    date = lubridate::ymd("2023-08-04"),
+    hours = 22.399992,
+    date_time = lubridate::ymd_hms("2023-08-04 22:24:00")
   )
-
   expect_equal(present_val, present_goal)
 })
 
@@ -30,7 +30,8 @@ test_that("simple example", {
   present_val_size_2 <- get_present(dnabin_size_2, seqs_size_2)
   present_goal_2 <- list(
     date = as.Date("2023-08-04"),
-    hours = (2/3) * 24
+    hours = (2/3) * 24,
+    date_time = lubridate::ymd_hms("2023-08-04 16:00:00")
   )
   expect_equal(present_val_size_2, present_goal_2, tolerance = 1e-6)
 
@@ -46,7 +47,8 @@ test_that("simple example", {
   present_val_size_3 <- get_present(dnabin_size_3, seqs_size_3)
   present_goal_3 <- list(
     date = as.Date("2023-08-04"),
-    hours = (3/5) * 24
+    hours = (3/5) * 24,
+    date_time = lubridate::ymd_hms("2023-08-04 14:24:00")
   )
   expect_equal(present_val_size_3, present_goal_3, tolerance = 1e-6)
 
@@ -63,7 +65,8 @@ test_that("simple example", {
   present_val_size_4 <- get_present(dnabin_size_4, seqs_size_4)
   present_goal_4 <- list(
     date = as.Date("2023-08-04"),
-    hours = (4/5) * 24
+    hours = (4/5) * 24,
+    date_time = lubridate::ymd_hms("2023-08-04 19:12:00")
   )
   expect_equal(present_val_size_4, present_goal_4, tolerance = 1e-6)
 })
