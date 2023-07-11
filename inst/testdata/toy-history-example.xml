@@ -16,7 +16,7 @@
                     <parameter id="TTOriginTime.t:sample-sequences" spec="parameter.RealParameter" estimate="false" name="originTime">70.0</parameter>
                     <parameter id="TTDisasterTimes.t:sample-sequences" spec="parameter.RealParameter" dimension="3" estimate="false" name="disasterTimes"></parameter>
                     <disasterSizes id="TTDisasterSizes.t:sample-sequences" spec="parameter.IntegerParameter" dimension="3" estimate="false"></disasterSizes>
-                    <parameter id="TTHistoryTimes.t:sample-sequences" spec="parameter.RealParameter" estimate="false" name="historyTimes">10.574 0.574</parameter>
+                    <parameter id="TTHistoryTimes.t:sample-sequences" spec="parameter.RealParameter" estimate="false" name="historyTimes">10.375 0.375</parameter>
                 </distribution>
                 <prior id="TTPropPsiPrior.t:sample-sequences" name="distribution" x="@TTPropPsi.t:sample-sequences">
                     <Beta id="Beta.0" name="distr">
