@@ -1,0 +1,20 @@
+#NEXUS
+
+Begin taxa;
+	Dimensions ntax=161;
+		Taxlabels
+			leaf_A
+			leaf_B
+			leaf_C
+			;
+End;
+Begin trees;
+	Translate
+		   1 leaf_A,
+		   2 leaf_B,
+		   3 leaf_C
+;
+tree STATE_0 = ((1:7.0,2:2.0):8.0,3:9.0):0.0;
+tree STATE_1000 = ((1:7.0,2:2.0):8.0,3:9.0):0.0;
+tree STATE_2000 = ((1:12.0,2:7.0):3.0,3:9.0):0.0;
+End;
