@@ -1,5 +1,7 @@
 #' Get the hours, minutes, and seconds from a fraction of a day.
 #'
+#' @param frac_day A fraction of a day (as a numeric).
+#'
 #' @export
 get_hms_str <- function(frac_day) {
   if (frac_day < 0 | frac_day >= 1) {
