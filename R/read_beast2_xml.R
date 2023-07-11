@@ -34,6 +34,7 @@ read_beast2_xml <- function(filename, present, units) {
     filename = filename,
     beast2 = beast2_model,
     hist_times = hist_insts,
-    present = present
+    present = present,
+    units = units
   )
 }

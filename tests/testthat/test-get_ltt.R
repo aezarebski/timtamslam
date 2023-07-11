@@ -22,7 +22,9 @@ test_that("basic example", {
     demo_x <-
       list(date = NULL, hours = NULL,
            date_time = present_ymd_hms - lubridate::ddays(dday))
-    expect_equal(get_ltt(demo_x, demo_tree, demo_present, "days"),
+    expect_equal(get_ltt(demo_x$date_time,
+                         demo_tree,
+                         demo_present, "days"),
                  val)
   }
 

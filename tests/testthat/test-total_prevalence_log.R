@@ -27,6 +27,5 @@ test_that("basic example", {
                             "toy-history-example-goal.log",
                             package = "timtamslamR")
   total_prev_goal <- read_beast2_log(goal_input)
-
-  expect_equal(total_prev_val, total_prev_goal)
+  expect_equal(total_prev_vals, total_prev_goal)
 })
