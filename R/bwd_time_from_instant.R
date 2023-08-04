@@ -1,14 +1,30 @@
-#' Backwards time of an instant relative to the present.
+#' @title Compute Backwards Time of an Instant Relative to the Present
 #'
-#' Compute the backwards time of an instant relative to the present in
-#' the specified units.
+#' @description This function computes the backwards time of an
+#'   instant relative to the present moment (the time of the most
+#'   recent sequenced sample) in the specified units.
 #'
-#' @param instant a POSIXct object representing an instant.
-#' @param present an object like that returned by \code{get_present}.
-#' @param units a character string specifying the units of the result.
+#' @param instant A POSIXct object representing the instant for which
+#'   the backwards time is to be computed.
 #'
-#' @return a numeric value representing the backwards time of the
-#'   instant.
+#' @param present An object like that returned by \code{get_present}.
+#'   This object serves as the reference point (the 'present moment')
+#'   for calculating the backwards time.
+#'
+#' @param units A character string specifying the units of the result.
+#'
+#' @details The function calculates the time difference between the
+#'   provided "instant" and the "present" time point. The result is
+#'   returned in the specified "units". If "instant" is later than
+#'   "present", the function will return a negative value because it
+#'   works in backwards time.
+#'
+#' @return A numeric value representing the backwards time of the
+#'   instant in the specified units. This value will be negative if
+#'   the "instant" is in the future relative to "present".
+#'
+#' @seealso
+#' \code{\link{get_present}}
 #'
 #' @export
 bwd_time_from_instant <- function(instant, present, units) {
