@@ -32,3 +32,25 @@ read_beast2_log <- function(filename, burn = 0, take_last = NA,
 
   return(result)
 }
+
+#' Read a BEAST2 tree file into a multiPhylo object.
+#'
+#' @param filename is the path to the log file.
+#' @param burn is the number to remove from the start.
+#' @param take_last is the number to take from the end.
+#'
+#' @return ape::multiPhylo containing the trees.
+#'
+#' @export
+read_beast2_trees <- function(filename, burn = 0, take_last = NA) {
+  y <- ape::read.nexus(filename)
+  if (is.na(take_last) && burn >= 0) {
+    result <- utils::tail(y, length(y) - burn)
+  } else if (!is.na(take_last) && burn == 0) {
+    result <- utils::tail(y, take_last)
+  } else {
+    stop("Unsupported arguments given to read_beast2_trees.")
+  }
+
+  return(result)
+}
