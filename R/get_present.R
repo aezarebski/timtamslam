@@ -1,10 +1,16 @@
-#' Extract the date and time of the most recent sequence.
+#' @title Extract the Date and Time of the Most Recent Sequence
 #'
-#' BEAST2 uses the time of the most recent sequence as the present so
-#' it is helpful to be able to extract this information.
+#' @description BEAST2 uses the time of the most recent sequence as
+#'   the present so it is helpful to be able to extract this
+#'   information.
 #'
-#' @param seqs_dated A DNAbin object with dates.
-#' @param seqs_timed A DNAbin object with times.
+#' @param seqs_dated A DNAbin object with dates attached to the sequences.
+#'
+#' @param seqs_timed A DNAbin object with times attached to the sequences.
+#'
+#' @details The function finds the maximum (most recent) date and time from
+#' the input sequences. It then creates a date-time object combining these
+#' values, which represents the most recent sequence time.
 #'
 #' @return A list with three elements: date, hours (time of last
 #'   sequenced sample) and a \code{date_time} which contains the
@@ -13,6 +19,9 @@
 #' @examples
 #'
 #' # see documentation for \code{rename_time_series}.
+#'
+#' @seealso
+#' \code{\link{get_hms_str}}
 #'
 #' @export
 get_present <- function(seqs_dated, seqs_timed) {
