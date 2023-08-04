@@ -24,9 +24,6 @@
 #'   sample number appended after an underscore, which is the default
 #'   output format from BEAST2.
 #'
-#' @seealso
-#' \code{\link{get_ltt}}
-#'
 #' @export
 total_prevalence_log <- function(beast2_log, beast2_trees,
                                  beast2_model) {
