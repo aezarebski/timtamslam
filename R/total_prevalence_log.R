@@ -1,8 +1,31 @@
-#' Compute the total prevalence from thie history sizes and LTT.
+#' @title Compute the Total Prevalence from the History Sizes and Lineage Through Time (LTT)
 #'
-#' @param beast2_log data frame containing the samples.
-#' @param beast2_trees ape::multiPhylo containing the trees.
-#' @param beast2_model the BEAST2 model from \code{read_beast2_xml}.
+#' @description This function computes the total prevalence using both
+#'   the history sizes and the lineage-through-time (LTT) data. It
+#'   checks for consistency between the samples in the input log and
+#'   trees, as well as between the history sizes in the log and the
+#'   model.
+#'
+#' @param beast2_log A data frame containing the samples. The column
+#'   names should include "Sample" and "HistorySize" followed by the
+#'   history sizes.
+#'
+#' @param beast2_trees An `ape::multiPhylo` object containing the trees.
+#'
+#' @param beast2_model The BEAST2 model obtained from `read_beast2_xml`.
+#'
+#' @details This function operates iteratively, adding the
+#'   Lineage-Through-Time (LTT) at each history time to the
+#'   corresponding history size from the log for each sample. The
+#'   output is a data frame structured similarly to the input log,
+#'   with the exception that "HistorySizes" is replaced with
+#'   "Prevalence" in the column names. It's important to note that
+#'   this function expects the `beast2_trees` to have names with the
+#'   sample number appended after an underscore, which is the default
+#'   output format from BEAST2.
+#'
+#' @seealso
+#' \code{\link{get_ltt}}
 #'
 #' @export
 total_prevalence_log <- function(beast2_log, beast2_trees,
