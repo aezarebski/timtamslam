@@ -35,3 +35,13 @@ test_that("basic example", {
 
   expect_equal(names(seqs_times_a), names(seqs_target))
 })
+
+test_that("error handling", {
+
+  path_input <- system.file("testdata",
+                            "demo-sequences-broken.fasta",
+                            package = "timtamslamR")
+  expect_true(file.exists(path_input))
+  seqs_calendar <- read_fasta(path_input)
+  expect_error(rename_dates_to_times_a(seqs_calendar))
+})
