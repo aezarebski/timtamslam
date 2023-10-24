@@ -43,9 +43,14 @@ total_prevalence_log <- function(beast2_log, beast2_trees,
   result <- beast2_log[hist_col_mask]
   names(result) <-
     gsub("HistorySizes", "Prevalence", names(result))
+  ## TODO The current implementation with nested loops is very
+  ## inefficient, it would be much better to collect all the history
+  ## times in a vector and then pass that to \code{get_ltt} so that
+  ## they can be queried in bulk. Of course this would require
+  ## \code{get_ltt} to accept a vector of values...
   for (jx in seq.int(ncol(result))) {
     for (ix in seq.int(nrow(beast2_log))) {
-      result[ix, jx] <- result[ix, jx] + get_ltt(beast2_model$hist_times[jx],beast2_trees[[ix]], beast2_model$present, beast2_model$units)
+      result[ix, jx] <- result[ix, jx] + get_ltt(beast2_model$hist_times[jx],beast2_trees[[ix]], beast2_model$present, beast2_model$units, origin=beast2_model$origin_time)
     }
   }
   result <- cbind(beast2_log["Sample"], result)

@@ -11,6 +11,7 @@ read_beast2_xml <- function(filename, present, units) {
   }
 
   beast2_model <- xml2::read_xml(filename)
+
   hist_times_text <-
     xml2::xml_text(
             xml2::xml_find_first(
@@ -18,7 +19,6 @@ read_beast2_xml <- function(filename, present, units) {
                     xpath = "//parameter[@name='historyTimes']"
                   )
           )
-
   if (is.na(hist_times_text)) {
     hist_times_num <- NULL
     hist_insts <- NULL
@@ -30,11 +30,27 @@ read_beast2_xml <- function(filename, present, units) {
         present$date_time - lubridate::ddays(hist_times_num)
     }
   }
+
+  origin_time_num <-
+    as.numeric(
+      xml2::xml_text(
+              xml2::xml_find_first(
+                      x = beast2_model,
+                      xpath = "//parameter[@name='originTime']"
+                    )
+            )
+    )
+  if (units == "days") {
+    origin_time <-
+      present$date_time - lubridate::ddays(origin_time_num)
+  }
+
   list(
     filename = filename,
     beast2 = beast2_model,
     hist_times = hist_insts,
     present = present,
+    origin_time = origin_time,
     units = units
   )
 }
