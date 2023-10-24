@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beast beautitemplate='Standard' beautistatus='' namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.base.evolution.alignment:beast.pkgmgmt:beast.base.core:beast.base.inference:beast.base.evolution.tree.coalescent:beast.pkgmgmt:beast.base.core:beast.base.inference.util:beast.evolution.nuc:beast.base.evolution.operator:beast.base.inference.operator:beast.base.evolution.sitemodel:beast.base.evolution.substitutionmodel:beast.base.evolution.likelihood" required="BEAST.base v2.7.4:timtam v0.4.0" version="2.7">
+
+
+    <run id="mcmc" spec="MCMC" chainLength="1000000">
+        <state id="state" spec="State" storeEvery="5000">
+          <parameter id="clockRate.c:sample-sequences" spec="parameter.RealParameter" lower="0.0" name="stateNode">0.001</parameter>
+          <stateNode id="TTHistorySizes.t:sample-sequences" spec="parameter.IntegerParameter">2000 3000</stateNode>
+          <parameter id="TTR0.t:sample-sequences" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.85</parameter>
+          <parameter id="TTPropPsi.t:sample-sequences" spec="parameter.RealParameter" lower="0.0" name="stateNode" upper="1.0">0.1</parameter>
+          <parameter id="TTPropTS.t:sample-sequences" spec="parameter.RealParameter" lower="0.0" name="stateNode" upper="1.0">0.4</parameter>
+        </state>
+        <distribution id="posterior" spec="CompoundDistribution">
+            <distribution id="prior" spec="CompoundDistribution">
+                <distribution id="TimTamTimeSeries.t:sample-sequences" spec="timtam.TimTam" historySizes="@TTHistorySizes.t:sample-sequences" parameterisation="timeSeriesR0" propPsi="@TTPropPsi.t:sample-sequences" propTimeSeries="@TTPropTS.t:sample-sequences" r0="@TTR0.t:sample-sequences" tree="@Tree.t:sample-sequences">
+                    <parameter id="TTNetRemovalRate.t:sample-sequences" spec="parameter.RealParameter" estimate="false" lower="0.0" name="sigma">0.1</parameter>
+                    <parameter id="TTOriginTime.t:sample-sequences" spec="parameter.RealParameter" estimate="false" name="originTime">20.0</parameter>
+                    <parameter id="TTDisasterTimes.t:sample-sequences" spec="parameter.RealParameter" dimension="3" estimate="false" name="disasterTimes"></parameter>
+                    <disasterSizes id="TTDisasterSizes.t:sample-sequences" spec="parameter.IntegerParameter" dimension="3" estimate="false"></disasterSizes>
+                    <parameter id="TTHistoryTimes.t:sample-sequences" spec="parameter.RealParameter" estimate="false" name="historyTimes">16.0 10.375 0.375</parameter>
+                </distribution>
+                <prior id="TTPropPsiPrior.t:sample-sequences" name="distribution" x="@TTPropPsi.t:sample-sequences">
+                    <Beta id="Beta.0" name="distr">
+                        <parameter id="RealParameter.5" spec="parameter.RealParameter" estimate="false" name="alpha">2.0</parameter>
+                        <parameter id="RealParameter.6" spec="parameter.RealParameter" estimate="false" name="beta">2.0</parameter>
+                    </Beta>
+                </prior>
+                <prior id="TTPropTimeSeriesPrior.t:sample-sequences" name="distribution" x="@TTPropTS.t:sample-sequences">
+                    <Beta id="Beta.1" name="distr">
+                        <parameter id="RealParameter.7" spec="parameter.RealParameter" estimate="false" name="alpha">2.0</parameter>
+                        <parameter id="RealParameter.8" spec="parameter.RealParameter" estimate="false" name="beta">2.0</parameter>
+                    </Beta>
+                </prior>
+                <prior id="TTR0Prior.t:sample-sequences" name="distribution" x="@TTR0.t:sample-sequences">
+                    <Normal id="Normal.0" name="distr">
+                        <parameter id="RealParameter.1" spec="parameter.RealParameter" estimate="false" name="mean">2.0</parameter>
+                        <parameter id="RealParameter.2" spec="parameter.RealParameter" estimate="false" name="sigma">2.0</parameter>
+                    </Normal>
+                </prior>
+                <prior id="ClockPrior.c:sample-sequences" name="distribution" x="@clockRate.c:sample-sequences">
+                    <Uniform id="Uniform.0" name="distr" upper="Infinity"/>
+                </prior>
+            </distribution>
+            <distribution id="likelihood" spec="CompoundDistribution" useThreads="true">
+                <distribution id="treeLikelihood.sample-sequences" spec="ThreadedTreeLikelihood" data="@sample-sequences" tree="@Tree.t:sample-sequences">
+                    <siteModel id="SiteModel.s:sample-sequences" spec="SiteModel">
+                        <parameter id="mutationRate.s:sample-sequences" spec="parameter.RealParameter" estimate="false" lower="0.0" name="mutationRate">1.0</parameter>
+                        <parameter id="gammaShape.s:sample-sequences" spec="parameter.RealParameter" estimate="false" lower="0.1" name="shape">1.0</parameter>
+                        <parameter id="proportionInvariant.s:sample-sequences" spec="parameter.RealParameter" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+                        <substModel id="JC69.s:sample-sequences" spec="JukesCantor"/>
+                    </siteModel>
+                    <branchRateModel id="StrictClock.c:sample-sequences" spec="beast.base.evolution.branchratemodel.StrictClockModel" clock.rate="@clockRate.c:sample-sequences"/>
+                </distribution>
+            </distribution>
+        </distribution>
+    </run>
+
+</beast>
